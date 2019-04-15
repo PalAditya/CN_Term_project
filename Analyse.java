@@ -50,14 +50,14 @@ class Analyse
 		}
 		if(rACK.size()!=plusACK.size()||rTCP.size()+drop!=plusTCP.size()||rCBR.size()!=plusCBR.size())
 		{
-			System.out.println(":(");
+			/*System.out.println(":(");
 			System.out.println(drop);
 			System.out.println(rACK.size()+","+plusACK.size());
 			System.out.println(rTCP.size()+","+plusTCP.size());
-			System.out.println(rCBR.size()+","+plusCBR.size());
+			System.out.println(rCBR.size()+","+plusCBR.size());*/
 		}
-		else
-			System.out.println(":)");
+		else;
+			//System.out.println(":)");
 		Iterator it = rCBR.entrySet().iterator();
 		Iterator it2 = rTCP.entrySet().iterator();
 		Iterator it3 = rACK.entrySet().iterator();
@@ -78,10 +78,12 @@ class Analyse
 			if(plusACK.get(pair.getKey())!=null)
 			delayACK+=((Double)pair.getValue()-plusACK.get(pair.getKey()));
 		}
-		System.out.println("Delay in CBR packets: "+delayCBR+"\nDelay in TCP packets: "+delayTCP+"\nDelay in ACK packets: "+delayACK);
-		System.out.println("Throughput in CBR packets: "+((1)/(delayCBR*1.0/rCBR.size()/(1000*1000)))+" bps\nThroughput in TCP packets: "+((1)/(delayTCP*1.0/rTCP.size()/(1040*1000)))+" bps\nThroughput in ACK packets: "+(1/(delayACK*1.0/rACK.size()/(40*1000)))+" bps");
-		System.out.println("Drop rate: "+(drop*1.0/plus));
+		BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt"));
+		writer.write("Delay in CBR packets: "+delayCBR+"\nDelay in TCP packets: "+delayTCP+"\nDelay in ACK packets: "+delayACK+"\n");
+		writer.write("Throughput in CBR packets: "+((1)/(delayCBR*1.0/rCBR.size()/(1000*1000)))+" bps\nThroughput in TCP packets: "+((1)/(delayTCP*1.0/rTCP.size()/(1040*1000)))+" bps\nThroughput in ACK packets: "+(1/(delayACK*1.0/rACK.size()/(40*1000)))+" bps\n");
+		writer.write("Drop rate: "+(drop*1.0/plus)+"\n");
+		writer.close();
 		Long t2=System.nanoTime();
-		System.out.println("Total time is: "+(t2-t1)+ " nanoseconds or "+ ((t2-t1)*1.0/(1000*1000*1000))+" seconds");
+		//System.out.println("Total time is: "+(t2-t1)+ " nanoseconds or "+ ((t2-t1)*1.0/(1000*1000*1000))+" seconds");
 	}
 }
