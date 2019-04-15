@@ -21,7 +21,7 @@ def generate():
 			f1.write("set ns [new Simulator]\n");
 			f1.write("$ns color 1 Blue \n$ns color 2 Red \nset nf [open out.nam w] \n$ns namtrace-all $nf \nset tf [open out.tr w]\n$ns trace-all $tf\n");
 			f1.write("proc finish {} {\n")
-			f1.write("global ns nf tf\n$ns flush-trace \nclose $nf \nclose $tf\nexec nam out.nam & \nexit 0\n}\n")
+			f1.write("global ns nf tf\n$ns flush-trace \nclose $nf \nclose $tf\nexit 0\n}\n")
 			for node in nodes:
 				f1.write("set n"+str(node)+" [$ns node]\n")
 			f1.write("Queue set limit_ 5\n")
