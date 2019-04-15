@@ -23,14 +23,27 @@ while True:
         l = sc.recv(1024)
         while (l):
             f.write(l)
+            print(l)
+            print('\n')
             l = sc.recv(1024)
+            if 'done' in str(l):
+                l = None
         f.close()
-
+    sc.send(b'Input file received')
 
     generate()
     subprocess.run(["ns", "generated.tcl"])
+    sc.send(b'Simulation log generated')
     subprocess.run(["java", "Analyse"])
-        
+    sc.send(b'Log analysed successfully.')
+    g = open("result.txt", "rb")
+    p = g.read(1024)
+    while (p):
+        sc.send(p)
+        p = g.read(1024)
+    
     sc.close()
 
 s.close()
+
+
