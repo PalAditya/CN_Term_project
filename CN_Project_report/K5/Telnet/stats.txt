@@ -1,0 +1,20 @@
+Delay in TCP packets: 0.16167999999999974
+Delay in ACK packets: 0.1504800000000001
+Throughput in TCP packets: 9.648688767936681E7 bps
+Throughput in ACK packets: 3987240.829346089 bps
+Drop rate: 0.0
+[slow]
+
+Delay in TCP packets: 0.15117099999999997
+Delay in ACK packets: 0.1500469999999997
+Throughput in TCP packets: 1.0319439575050773E8 bps
+Throughput in ACK packets: 3998747.059254775 bps
+Drop rate: 0.0
+[medium]
+
+Delay in TCP packets: 0.15058499999999997
+Delay in ACK packets: 0.15002600000000008
+Throughput in TCP packets: 1.0359597569479035E8 bps
+Throughput in ACK packets: 3999306.7868236154 bps
+Drop rate: 0.0
+[fast]
